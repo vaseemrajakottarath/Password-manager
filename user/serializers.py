@@ -68,3 +68,9 @@ class ChangePasswordSerializer(serializers.ModelSerializer):
         instance.set_password(validated_data['password'])
         instance.save()
         return instance
+
+class ItemSerializer(serializers.ModelSerializer):
+
+ created_by = serializers.HiddenField(
+    default=serializers.CurrentUserDefault()
+)

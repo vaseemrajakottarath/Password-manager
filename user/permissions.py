@@ -23,4 +23,4 @@ class IsObjectOwner(permissions.BasePermission):
         if request.user.is_staff and request.method not in self.edit_methods:
             return True
         
-        return False
+        return False        

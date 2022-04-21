@@ -3,11 +3,13 @@ from django.shortcuts import render
 from rest_framework import generics,status
 from rest_framework.response import Response
 
-from .models import Account
-from . serializers import UserRegister,ChangePasswordSerializer
+from .models import Account, Item
+from . serializers import ItemSerializer, UserRegister,ChangePasswordSerializer
 
 from rest_framework.permissions import IsAuthenticated
 from .permissions import IsObjectOwner
+
+
 
 
 
@@ -34,3 +36,9 @@ class ChangePasswordView(generics.UpdateAPIView,Exception):
     serializer_class = ChangePasswordSerializer
     def put(self,request):
         return Response({"message:Updated successfully"})
+
+
+class ListItems(generics.ListCreateAPIView):
+    queryset=Item.objects.all()
+    serializer_class=ItemSerializer
+ 

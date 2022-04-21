@@ -66,3 +66,8 @@ class Account(AbstractBaseUser):
     
     def has_module_perms(self,add_labels):
         return True
+
+class Item(models.Model):
+    item_name=models.CharField(max_length=100)
+    created_at=models.DateTimeField(auto_now_add=True)
+    created_by=models.ForeignKey(Account,on_delete=models.CASCADE)
